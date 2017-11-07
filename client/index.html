@@ -1,0 +1,76 @@
+cd<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+  <section id="app" class="section">
+    <!-- {{data}} -->
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third">
+        </div>
+        <div class="column is-one-third">
+          <h1 class="title is-1 text-shadow-drop-center">Amazing mango tree simulator</h1>
+        </div>
+        <div class="column is-one-third">
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-one-third">
+        </div>
+        <div class="column is-one-third">
+          <img :src="treeIllustration" alt="">
+        </div>
+        <div class="column is-one-third">
+        </div>
+
+      </div>
+
+      <div class="columns">
+        <div class="column is-one-third">
+        </div>
+        <div class="column is-one-third">
+          <div class="card">
+
+            <div class="card-content status">
+              <h3>Life Time Achievment</h3>
+              <p class="card-header-title">
+                Age: {{data.age}} Months <br>
+                Height: {{data.height}} CM<br>
+                Fruits: {{data.fruits}} <br>
+                Harvested: {{data.harvested}} <br>
+
+              </p>
+              <hr>
+              <h3>Life Time Achievment</h3>
+              <p class="card-header-title">
+
+                Harvested: {{data.lifeTimeHarvested}} <br>
+                Trees Planted: {{data.lifeTimeDeadTrees}} <br>
+              </p>
+              <footer class="card-footer">
+                <span href="#" class="card-footer-item"></span>
+                <span href="#" @click="harvest" class="card-footer-item harvest">Harvest</span>
+                <span href="#" class="card-footer-item"></span>
+              </footer>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-third">
+        </div>
+
+      </div>
+    </div>
+  </section>
+  </body>
+  <script type="text/javascript" src="/index.js"></script>
+</html>
