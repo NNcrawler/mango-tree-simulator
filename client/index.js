@@ -15,11 +15,24 @@ var app = new Vue({
   el: '#app',
   data: {
     message: 'Hello Vue!',
-    data: null,
+    data: {},
     treeIllustration: '',
     log: null,
   },
   computed: {
+    treeImg() {
+
+      const age = this.data.age;
+      if (age < 12){
+        return "/asset/tree 1.png"
+      } else if (age >= 12 && age < 24) {
+        return "/asset/tree 2.png"
+      } else if (age >= 24 && age < 36) {
+        return "/asset/tree 3.png"
+      } else if (age >= 36) {
+        return "/asset/tree 4.png"
+      }
+    },
   },
   methods: {
     harvest() {

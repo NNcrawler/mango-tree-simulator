@@ -12,7 +12,7 @@ let mangoTree = new MangoTree();
 const treeLog = new TreeLog();
 app.use(cors());
 
-var task = CronJob.schedule('*/5 * * * *', function() {
+var task = CronJob.schedule('* * * * * *', function() {
   mangoTree.grow();
   if( mangoTree.isAlive == false ) {
     mangoTree = new MangoTree();
