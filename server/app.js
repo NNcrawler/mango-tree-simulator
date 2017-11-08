@@ -4,6 +4,9 @@ const MangoTree = require('./MangoTree');
 const TreeLog = require('./TreeLog');
 const cors = require('cors');
 var CronJob = require('node-cron');
+const dataUpdater = require('./dataUpdater');
+
+dataUpdater.initialTreeLog();
 
 let mangoTree = new MangoTree();
 const treeLog = new TreeLog();
@@ -37,6 +40,7 @@ app.get('/harvest', function (req, res){
   let fruitsHarvested = mangoTree.harvest();
   treeLog.addHarvest(fruitsHarvested);
   res.send({ fruitsHarvested })
+  // dataUpdater.updateLog({lifeTimeHarvested: treeLog.lifeTimeHarvested})
 })
 
 app.listen(3000);

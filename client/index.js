@@ -1,9 +1,25 @@
+
+// Required for side-effects
+// require("firebase/firestore");
+
+firebase.initializeApp({
+  apiKey: 'AIzaSyB9qtA3mYGOGcNwZ9vGl3X8ltUAqIqbjEg',
+  authDomain: 'mango-tree-d3584.firebaseapp.com',
+  projectId: 'mango-tree-d3584'
+});
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
 var app = new Vue({
   el: '#app',
   data: {
     message: 'Hello Vue!',
     data: null,
     treeIllustration: '',
+    log: null,
+  },
+  computed: {
   },
   methods: {
     harvest() {
@@ -38,3 +54,13 @@ var app = new Vue({
     })
   },
 })
+
+db.collection('tree').doc('mango')
+.onSnapshot(function(doc) {
+  app.data = doc.data();
+});
+
+db.collection('log').doc('mango')
+.onSnapshot(function(doc) {
+  app.log = doc.data();
+});

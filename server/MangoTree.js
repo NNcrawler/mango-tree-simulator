@@ -1,3 +1,5 @@
+const dataUpdater = require('./dataUpdater');
+
 class Fruit {
   constructor() {
     this.isGood = Math.round(Math.random()) == 1 ? true : false;
@@ -14,6 +16,15 @@ class MangoTree {
     this.isFruitMax = false;
     this.maxAge = 80;
     this.isAlive = true;
+
+    let data = {
+      height : this.height,
+      age : this.age,
+      fruits : this.fruits.length,
+      harvested : 0,
+    };
+
+    dataUpdater.createNewTree(data);
   }
 
   grow() {
@@ -26,6 +37,14 @@ class MangoTree {
     if (this.age > this.maxAge) {
       this.isAlive = false;
     }
+
+    let data = {
+      height : this.height,
+      age : this.age,
+      fruits : this.fruits.length,
+    };
+
+    dataUpdater.updateTree(data)
   }
 
   fruitGloom() {
@@ -36,12 +55,15 @@ class MangoTree {
       }
     } else {
       this.isFruitMax = true;
+      this.fruits = [];
     }
   }
 
   harvest() {
     let goodFruit = this.fruits.reduce((p, c) => {return c.isGood ? p+1 : p}, 0);
     this.fruits = [];
+    this.harvested += goodFruit;
+    dataUpdater.updateTree({harvested: goodFruit});
     return goodFruit;
   }
 }
